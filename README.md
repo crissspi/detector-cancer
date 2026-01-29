@@ -8,7 +8,7 @@ El motor de clasificación utiliza una Red Neuronal Convolucional (CNN) basada e
 * **Arquitectura**: ResNet50 implementada mediante la librería `timm`.
 * **Técnica**: Transfer Learning sobre el dataset BreaKHis (Breast Cancer Histopathological Database).
 * **Clasificación**: Binaria (Benigno vs. Maligno).
-* **Optimizador**: Adam con una tasa de aprendizaje de 1e-4.
+* **Optimizador**: Adam.
 * **Función de Pérdida**: CrossEntropyLoss.
 
 
@@ -16,9 +16,9 @@ El motor de clasificación utiliza una Red Neuronal Convolucional (CNN) basada e
 ## Estructura del Código
 
 ### 1. Entrenamiento y Validación (Notebook)
-El proceso de desarrollo se documentó en un entorno de notebook (`prueba.ipynb`) donde se ejecutaron las siguientes etapas:
+El proceso de desarrollo se documentó en un entorno de notebook donde se ejecutaron las siguientes etapas:
 * **Pre-procesamiento de Datos**: Implementación de una función de aplanado (*flatten*) para organizar las imágenes del dataset original en directorios de entrenamiento y validación.
-* **Entrenamiento**: Ejecución de 5 épocas utilizando una GPU NVIDIA GeForce RTX 2060, logrando reducir la pérdida de 0.5189 a 0.1048.
+* **Entrenamiento**: Ejecución de 5 épocas utilizando una GPU NVIDIA, logrando reducir la pérdida de 0.5189 a 0.1048.
 * **Evaluación**: Generación de métricas de desempeño con una precisión (accuracy) final del 98%.
 
 ### 2. Aplicación y Despliegue (Streamlit)
