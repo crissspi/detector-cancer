@@ -27,11 +27,8 @@ def cargar_modelo():
     try:
         model.load_state_dict(torch.load('modelo_cancer.pth', map_location=torch.device('cpu')))
     except:
-        try:
-            model.load_state_dict(torch.load('modelo_cancer_tihare.pth', map_location=torch.device('cpu')))
-        except:
-            st.error("Error: No se encuentra el archivo del modelo.")
-            st.stop()     
+        st.error("Error: No se encuentra el archivo del modelo.")
+        st.stop()     
     model.eval()
     return model
 
