@@ -12,20 +12,13 @@ st.set_page_config(
 )
 
 def validar_imagen(image):
-    img_array = np.array(image)
-    if len(img_array.shape) < 3: return False, "Formato de imagen no válido."
+    img_hsv = image.convert('HSV')
+    s_canal = np.array(img_hsv)[:, :, 1] 
+    saturacion_media = np.mean(s_canal)
     
-    promedio_r = np.mean(img_array[:, :, 0])
-    promedio_g = np.mean(img_array[:, :, 1])
-    promedio_b = np.mean(img_array[:, :, 2])
+    if saturacion_media < 20: 
+        return False, "La imagen no tiene suficiente color (posible escala de grises)."
     
-    if promedio_g > promedio_r:
-        return False, "La imagen parece un paisaje o naturaleza (exceso de verde)."
-    
-    desviacion = np.std([promedio_r, promedio_g, promedio_b])
-    if desviacion < 15:
-        return False, "La imagen parece escala de grises o sin tinción."
-        
     return True, "OK"
 
 @st.cache_resource 
